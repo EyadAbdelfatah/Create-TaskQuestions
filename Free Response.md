@@ -73,43 +73,18 @@ Programs accept input to achieve their intended functionality. **Describe at lea
   Butters the goat
 
 ```JavaScript
-DOMSelectors.generalForm.addEventListener(
-  "submit",
-  function quoteInitiate(userSubmit) {
-    userSubmit.preventDefault();
-    const valueUserAge = encodeURIComponent(DOMSelectors.userAge.value); // Test for displaying user Age: young / old
-    const valueUserFeeling = encodeURIComponent(DOMSelectors.userFeeling.value); // Test for displaying user feeling: one of the options
-    let category = "";
-
-    if (valueUserAge === "young") {
-      console.log(
-        "You still have a long life ahead of you) Look what is out there!"
-      );
-    } else {
-      console.log(
-        "Focus on furthering your friendships. Appreciate the small things in life."
-      );
+const resetHistory = function () {
+  DOMSelectors.mainOutput.innerHTML = ""; // Clear previous quote
+  if (quoteCurrent.length > 0) {
+    for (let i = 0; i < quoteCurrent.length; i++) {
+      const quote = quoteCurrent[i];
+      createQuoteCard(quote);
     }
-    categorySet();
-    function categorySet() {
-      if (valueUserFeeling === "Happy") {
-        category = "happiness";
-      } else if (valueUserFeeling === "Sad") {
-        category = "alone";
-      } else if (valueUserFeeling === "Scared") {
-        category = "fear";
-      } else if (valueUserFeeling === "Bored") {
-        category = "attitude";
-      } else if (valueUserFeeling === "Angry") {
-        category = "anger";
-      }
-    }
-    retrieveFeelingQuote(category); //Based on category, a specific quote is retrieve
   }
-);
+};
 ```
 
-code uses the input to set a category based on the user input, the program then retrieves a quote based on the category of tjhe input
+code uses the input to set a category based on the user input, the program then retrieves a quote based on the category of tjhe input and categorizes whther the user is young or old.
 
 Angelina:
 
@@ -117,7 +92,7 @@ Angelina:
 function insertText(inputContent, type) {
   DOMSelect.results.insertAdjacentHTML("beforeend", `<br></br>`);
   const content = inputContent;
-  if (type === "file") {
+  if (type === "file") {//selection
     content.forEach(function (item) {
       DOMSelect.results.insertAdjacentHTML(
         "beforeend",
@@ -125,7 +100,7 @@ function insertText(inputContent, type) {
       );
     });
   } else {
-    content.forEach(function (item) {
+    content.forEach(function (item) {//iteration
       DOMSelect.results.insertAdjacentHTML(
         "beforeend",
         `<p class="text">${item.textContent}</p>`
@@ -138,7 +113,7 @@ function insertText(inputContent, type) {
 }
 ```
 
-function takes the inputed content to see whether it was a file or not and based on that,
+function takes the inputed content to see whether it was a file or not and based on that,the program puts teh twext oln screen
 
 ### Question 2
 
